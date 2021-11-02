@@ -7,7 +7,6 @@ import me.XdDanda.Messages.Welcome;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Main {
 
@@ -17,14 +16,13 @@ public class Main {
         String input2;
         int num;
         int stage = 0;
-        int counter = 0;
 
         int box;
         int lenght;
         int index;
 
         ArrayList<Integer> list = new ArrayList<>();
-        HashMap<Integer, Integer> sorted = new HashMap<>();
+        ArrayList<Integer> sorted = new ArrayList<>();
 
         Welcome.print();
 
@@ -69,31 +67,28 @@ public class Main {
                 break;
             }
         }
+
+
+        lenght = list.size();
         System.out.println("Your list: " + list);
-        System.out.println("Your list sorted: ");
+        System.out.println(" ");
 
-        lenght = list.size();
+        for (int j = lenght; j != 0; j--) {
+            lenght = list.size();
 
-        box = list.get(0);
-        index = 0;
-        for (int i = 1; i != lenght; i++){
+            box = list.get(0);
+            index = 0;
+            for (int i = 1; i != lenght; i++){
 
-            if (list.get(i) < box) {
-                box = list.get(i);
-                index = i;
+                if (list.get(i) < box) {
+                    box = list.get(i);
+                    index = i;
+                }
             }
+            list.remove(index);
+            sorted.add(box);
         }
-        list.remove(index);
 
-        System.out.println(" ");
-        System.out.println("Number: " + box + " & index: " + index);
-
-        sorted.put(counter, box);
-        System.out.println(" ");
-        System.out.println(sorted);
-
-        lenght = list.size();
-
-        System.out.println(lenght);
+        System.out.println("Your list sorted: " + sorted);
     }
 }
