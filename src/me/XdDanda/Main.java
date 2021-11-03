@@ -2,6 +2,7 @@ package me.XdDanda;
 
 import me.XdDanda.Messages.Again;
 import me.XdDanda.Messages.Info;
+import me.XdDanda.Messages.Type;
 import me.XdDanda.Messages.Welcome;
 
 import java.io.BufferedReader;
@@ -14,8 +15,10 @@ public class Main {
 
         String input;
         String input2;
+        String input3;
         int num;
         int stage = 0;
+        int stage2 = 0;
 
         int box;
         int lenght;
@@ -70,25 +73,65 @@ public class Main {
 
 
         lenght = list.size();
+        System.out.println(" ");
         System.out.println("Your list: " + list);
         System.out.println(" ");
 
-        for (int j = lenght; j != 0; j--) {
-            lenght = list.size();
+        while (true) {
+            Type.print();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+            input3 = reader.readLine();
 
-            box = list.get(0);
-            index = 0;
-            for (int i = 1; i != lenght; i++){
-
-                if (list.get(i) < box) {
-                    box = list.get(i);
-                    index = i;
-                }
+            if (input3.equalsIgnoreCase("<")) {
+                stage2 = 1;
+                break;
+            } else if (input3.equalsIgnoreCase(">")) {
+                stage2 = 2;
+                break;
+            } else {
+                System.out.println(" ");
+                System.out.println("Try it again :/");
+                System.out.println(" ");
             }
-            list.remove(index);
-            sorted.add(box);
         }
 
+        if (stage2 == 1) {
+            for (int j = lenght; j != 0; j--) {
+                lenght = list.size();
+
+                box = list.get(0);
+                index = 0;
+                for (int i = 1; i != lenght; i++){
+
+                    if (list.get(i) < box) {
+                        box = list.get(i);
+                        index = i;
+                    }
+                }
+                list.remove(index);
+                sorted.add(box);
+            }
+        } else if (stage2 == 2){
+            for (int j = lenght; j != 0; j--) {
+                lenght = list.size();
+
+                box = list.get(0);
+                index = 0;
+                for (int i = 1; i != lenght; i++){
+
+                    if (list.get(i) > box) {
+                        box = list.get(i);
+                        index = i;
+                    }
+                }
+                list.remove(index);
+                sorted.add(box);
+            }
+        }
+        System.out.println(" ");
         System.out.println("Your list sorted: " + sorted);
+        System.out.println(" ");
+        System.out.println(" ");
+        System.out.println(" ");
     }
 }
